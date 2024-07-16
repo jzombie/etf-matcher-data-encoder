@@ -18,8 +18,16 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
+    # command: |
+    #   sh -c '
+    #   rm -rf /app/out &&
+    #   mkdir -p /app/out &&
+    #   cp -r /build_artifacts/out/ /app/out/
+    #   '
     command: |
       sh -c '
-      mkdir -p /app/out
-      cp /build_artifacts/out/.env /app/out/.env
+      rm -rf /app/out &&
+      mkdir -p /app/out &&
+      ./docker_build_helpers/encode_data.sh &&
+      cp -r /build_artifacts/out/ /app/out/
       '

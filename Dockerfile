@@ -6,7 +6,7 @@ ARG DOCKER_BUILD=1
 
 # Install necessary dependencies
 RUN apt-get update && \
-    apt-get install -y cmake libz-dev python3 curl openssl && \
+    apt-get install -y zip cmake libz-dev python3 curl openssl && \
     rm -rf /var/lib/apt/lists/*
 
 # Create a new directory for the project

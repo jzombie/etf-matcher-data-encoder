@@ -8,12 +8,12 @@ set -e
 
 # Build the encryption utility
 cd /app/rust/encrypt_password
-cargo build --release
+cargo build
 
 # TODO: Use release contingent on build environment
 #
 # Run the encryption utility to get the key, IV, and encrypted password
-output=$(./target/release/encrypt_password "$PLAINTEXT_PASSWORD")
+output=$(./target/debug/encrypt_password "$PLAINTEXT_PASSWORD")
 
 # Extract the key, IV, and encrypted password from the output
 key=$(echo "$output" | grep 'Key' | awk -F '[[]|[]]' '{print $2}' | tr -s ' ' ',' | sed 's/^,//;s/,$//')
