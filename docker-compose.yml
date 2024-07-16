@@ -29,5 +29,5 @@ services:
       rm -rf /app/out &&
       mkdir -p /app/out &&
       ./docker_build_helpers/encode_data.sh &&
-      cp -r /build_artifacts/out/ /app/out/
+      mv /build_artifacts/out /app/out
       '
