@@ -4,6 +4,7 @@
 .DS_Store
 
 data/
+out/
 
 # Ignore Rust targets
 **/rust/**/target/

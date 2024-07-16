@@ -1,0 +1,25 @@
+x-variables:
+  image-name: &image-name etf-matcher-data-encoder:latest
+
+x-base-service: &base-service
+  image: *image-name
+  build:
+    context: .
+    dockerfile: Dockerfile
+  volumes:
+    - .:/app
+  environment:
+    - FORCE_COLOR=1
+      - RUST_BACKTRACE=1
+
+services:
+  encode:
+    <<: *base-service
+    build:
+      context: .
+      dockerfile: Dockerfile
+    command: |
+      sh -c '
+      mkdir -p /app/out
+      cp /build_artifacts/out/.env /app/out/.env
+      '

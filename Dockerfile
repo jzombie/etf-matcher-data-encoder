@@ -19,3 +19,6 @@ COPY . .
 # Make build script executable and run it
 RUN chmod +x ./docker_build_helpers/generate_env.sh && ./docker_build_helpers/generate_env.sh
 RUN chmod +x ./docker_build_helpers/encrypt_password.sh && ./docker_build_helpers/encrypt_password.sh
+
+RUN mkdir -p /build_artifacts/out
+RUN cp /app/.env /build_artifacts/out/.env
