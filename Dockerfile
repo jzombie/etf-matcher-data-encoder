@@ -12,17 +12,10 @@ RUN apt-get update && \
 # Create a new directory for the project
 WORKDIR /app
 
-FROM rust-base as env-build
-
-COPY .env /app/.env
-
-# Copy only Rust backend files
-COPY backend/rust ./backend/rust
-COPY docker_build_helpers/ ./docker_build_helpers/
+COPY . .
 
 # TODO: Combine these steps?
 # 
 # Make build script executable and run it
 RUN chmod +x ./docker_build_helpers/generate_env.sh && ./docker_build_helpers/generate_env.sh
 RUN chmod +x ./docker_build_helpers/encrypt_password.sh && ./docker_build_helpers/encrypt_password.sh
-
