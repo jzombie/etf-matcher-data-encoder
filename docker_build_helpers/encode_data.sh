@@ -19,12 +19,12 @@ fi
 cd /app/rust/encrypt_tool
 cargo build
 
-mkdir -p /tmp/output-build
+mkdir -p /tmp/out-build
 
 # Loop over all files in the /app/in directory and its subdirectories
 find /app/in -type f | while read -r file; do
     # Remove the base directory path and file extension
-    relative_path="${file#/app/data/}"
+    relative_path="${file#/app/in/}"
     output_path="${relative_path%.*}.enc"
     
     # Create the necessary subdirectories in the output directory
