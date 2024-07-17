@@ -6,7 +6,6 @@ use flate2::Compression;
 use hmac::Hmac;
 use pbkdf2::pbkdf2;
 use sha2::Sha256;
-use dotenv::dotenv;
 use dotenv::from_filename;
 use rand::Rng;
 use std::env;
@@ -35,10 +34,6 @@ fn encrypt_and_compress_file(input_file: &str, output_file: &str) -> Result<(), 
     encoder.write_all(&data)?;
     let compressed_data = encoder.finish()?;
     println!("Compressed data length: {}", compressed_data.len());
-
-    // Load environment variables from the specified .env file
-    let env_file_path = "/build_artifacts/out/.env";
-    from_filename(env_file_path).ok();    
 
     // Retrieve the password, key, and IV from environment variables
     let encrypted_password = parse_env_variable_to_bytes(&env::var("ENCRYPTED_PASSWORD")?)?;
@@ -82,7 +77,9 @@ fn encrypt_and_compress_file(input_file: &str, output_file: &str) -> Result<(), 
 }
 
 fn main() -> Result<(), Box<dyn std::error::Error>> {
-    dotenv().ok();
+    // Load environment variables from the specified .env file
+    let env_file_path = "/build_artifacts/out/.env";
+    from_filename(env_file_path).ok();
 
     let args: Vec<String> = env::args().collect();
     if args.len() != 3 {
