@@ -10,20 +10,11 @@ x-base-service: &base-service
     - .:/app
   environment:
     - FORCE_COLOR=1
-      - RUST_BACKTRACE=1
+    - RUST_BACKTRACE=1
 
 services:
   encode:
     <<: *base-service
-    build:
-      context: .
-      dockerfile: Dockerfile
-    # command: |
-    #   sh -c '
-    #   rm -rf /app/out &&
-    #   mkdir -p /app/out &&
-    #   cp -r /build_artifacts/out/ /app/out/
-    #   '
     command: |
       sh -c '
       rm -rf /app/out &&
