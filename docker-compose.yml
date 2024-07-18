@@ -22,3 +22,14 @@ services:
       ./docker_build_helpers/encode_data.sh &&
       cp -r /build_artifacts/out/. /app/out/
       '
+
+  wipe:
+    <<: *base-service
+    command: |
+      sh -c '
+        rm -rf in/* in/.* 2>/dev/null || true
+        rm -rf out/* out/.* 2>/dev/null || true
+      '
+    profiles:
+      # Don't run by default
+      - wipe

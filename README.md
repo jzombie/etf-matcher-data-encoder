@@ -12,3 +12,8 @@ docker compose up      # or `docker compose up encode`
 
 Ensure .env is synced.
 
+## Wipe
+
+```bash
+docker compose up wipe
+```
