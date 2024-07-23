@@ -18,3 +18,9 @@ _Note: `out/.env` won't be updated until running `docker compose up`._
 ```bash
 docker compose up wipe
 ```
+
+## Container Bash
+
+```bash
+docker-compose run -it bash
+```

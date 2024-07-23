@@ -23,6 +23,14 @@ services:
       cp -r /build_artifacts/out/. /app/out/
       '
 
+  # docker-compose run -it bash
+  bash:
+    <<: *base-service
+    command: bash
+    profiles:
+      # Don't run by default
+      - bash
+
   wipe:
     <<: *base-service
     command: |
