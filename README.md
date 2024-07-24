@@ -4,7 +4,7 @@
 docker compose build --no-cache
 ```
 
-_Note: `out/.env` won't be updated until running `docker compose up`._
+_Note: `{project_root}/out/.env` won't be updated until running `docker compose up`._
 
 ## Encode
 
@@ -12,7 +12,9 @@ _Note: `out/.env` won't be updated until running `docker compose up`._
 docker compose up      # or `docker compose up encode`
 ```
 
-Ensure .env is synced w/ project.
+Ensure `{project_root}/out/.env` is synced w/ project.
+
+Note: `{project_root}/.env` is ignored when building the project but can be used for encoding. A new `{project_root}/out/.env` will not be created, so keep this in mind.
 
 ## Wipe
 
