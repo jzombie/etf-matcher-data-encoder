@@ -1,3 +1,7 @@
+# ETF Matcher Encoder
+
+Encoding tooling for [ETF Matcher](https://github.com/jzombie/etf-matcher) repo.
+
 ## Generate new Encryption Keys
 
 ```bash
