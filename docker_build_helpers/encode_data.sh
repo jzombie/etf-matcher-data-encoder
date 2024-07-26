@@ -19,12 +19,7 @@ fi
 cd /app/rust/encrypt_tool
 cargo build
 
-
 mkdir -p /tmp/out-build
-
-# Clear build cache, if exists
-# (Note: I don't know how this is getting persisted because it shouldn't be in a volume mount)
-rm -rf /build_artifacts/out/*
 
 # Loop over all files in the /app/in directory and its subdirectories
 find /app/in -type f | while read -r file; do
